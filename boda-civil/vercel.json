@@ -1,0 +1,6 @@
+{
+    "version": 2,
+    "framework": "angular",
+    "buildCommand": "npx ng build",
+    "outputDirectory": "dist/boda-civil/browser"
+}
