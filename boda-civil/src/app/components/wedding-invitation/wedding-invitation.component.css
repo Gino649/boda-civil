@@ -397,7 +397,7 @@
   /* 🌹 LA GUIRNALDA BAJA EXCLUSIVAMENTE A LA BASE (RESPONSIVA) */
   .couple-photo-section .botanical-garland-embrace {
     position: absolute;    
-    bottom: clamp(-70px, -18vw, -103px);
+    bottom: clamp(-75px, -18vw, -103px);
     left: 50%;
     transform: translateX(-50%) rotate(40deg); 
     width: clamp(240px, 68vw, 320px);
