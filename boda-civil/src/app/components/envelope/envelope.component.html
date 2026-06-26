@@ -1,0 +1,58 @@
+<div class="screen-container">
+  
+    <!-- Audio de fondo -->
+    <audio #bgMusic loop preload="auto">
+      <source src="assets/musica-boda.mp3" type="audio/mpeg">
+    </audio>
+  
+    <!-- Control de música flotante -->
+    <button *ngIf="isOpen" class="audio-control animate-btn" (click)="toggleMusic()">
+      {{ isMuted ? '🎵' : '⏸️' }}
+    </button>
+  
+    <!-- ESCENARIO DE AGENCIA (Centrado Absoluto) -->
+    <div class="scene-wrapper" (click)="startOpeningSequence()">
+      
+      <div class="main-invitation-stage">
+        
+        <!-- CAPA 1: Fondo de atrás del sobre abierto con la solapa arriba -->
+        <img src="assets/SobreAbierto.png" class="stage-img back-layer" alt="Sobre Abierto Fondo">
+  
+        <!-- CAPA 2: LA TARJETA (Nace enjaulada en la máscara de la ranura) -->
+        <div class="wedding-card-container">
+          <img src="assets/Tarjeta.png" class="card-base-img" alt="Tarjeta Invitación">
+          
+          <!-- TEXTO E INTERACTIVIDAD DE ANGULAR GRABADOS EN EL LIENZO -->
+          <div class="card-inner-content">
+            <p class="tagline">Nuestra Boda Civil</p>
+            <h1 class="couple-title">Gino & Claudia</h1>
+            <div class="ornament">✦</div>
+            
+            <p class="phrase">
+              "El amor no se busca, se construye día con día. Nos comprometemos a caminar juntos este nuevo sendero."
+            </p>
+  
+            <!-- Contador de Tiempo Estilizado -->
+            <div class="timer-box">
+              <div class="time"><span class="num">{{ countdown.dias }}</span><span class="lbl">Días</span></div>
+              <div class="time"><span class="num">{{ countdown.horas }}</span><span class="lbl">Hrs</span></div>
+              <div class="time"><span class="num">{{ countdown.minutos }}</span><span class="lbl">Min</span></div>
+              <div class="time"><span class="num">{{ countdown.segundos }}</span><span class="lbl">Seg</span></div>
+            </div>
+  
+            <!-- Botones de Acción -->
+            <div class="buttons-wrapper">
+              <button class="btn-agency pulse-effect" (click)="openGoogleMaps($event)">Ver Mapa 📍</button>
+              <button class="btn-agency shake-effect gold-btn" (click)="confirmarWhatsApp($event)">Confirmar Asistencia 🥂</button>
+            </div>
+          </div>
+        </div>
+  
+        <!-- CAPA 3: Frente del sobre cerrado con el sello (Tapa todo al inicio) -->
+        <img src="assets/Sobre_cerrado.png" class="stage-img front-closed-layer" alt="Sobre Cerrado">
+  
+      </div>
+  
+      <p class="tap-instruction" *ngIf="!isOpen">Toca el sobre para abrir ✉</p>
+    </div>
+  </div>

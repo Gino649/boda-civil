@@ -1,0 +1,138 @@
+:host {
+    --bg-beige: #f5f0e6;       
+    --gold-premium: #c5a880;
+    --dark-luxury: #141a1f;
+  }
+  
+  .screen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-beige);
+    overflow: hidden;
+    margin: 0; padding: 0;
+  }
+  
+  .scene-wrapper {
+    position: relative;
+    width: 95%;
+    max-width: 420px;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  /* --- ESCENARIO DE AGENCIA --- */
+  .main-invitation-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3; /* Forzamos la relación horizontal exacta de tus imágenes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* REGLA DE ORO: Las imágenes miden exactamente lo mismo de forma obligatoria */
+  .stage-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: contain; /* Mantiene la escala de Photoshop sin deformaciones */
+  }
+  
+  .front-closed-layer {
+    z-index: 35; /* Tapa todo al iniciar */
+  }
+  
+  .back-layer {
+    z-index: 5;
+  }
+  
+  /* --- CONTENEDOR COMPARTIDO DE LA TARJETA --- */
+  .wedding-card-container {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 20;
+  }
+  
+  .card-base-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: contain;
+  }
+  
+  /* --- CONTENIDO DE TEXTO EN EL CENTRO EXACTO --- */
+  .card-inner-content {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    padding: 30px 42px; /* Margen de protección interno para encajar dentro del marco dorado */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 40;
+  }
+  
+  /* Tipografías Compactas */
+  .tagline { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 3px; color: var(--gold-premium); margin-bottom: 2px; }
+  .couple-title { font-family: 'Cormorant Garamond', serif; font-size: 1.95rem; font-weight: 400; color: var(--dark-luxury); margin-bottom: 2px; line-height: 1; }
+  .ornament { color: var(--gold-premium); font-size: 0.75rem; margin-bottom: 4px; }
+  .phrase { font-style: italic; color: #555; font-size: 0.7rem; line-height: 1.4; margin-bottom: 12px; max-width: 88%; }
+  
+  /* --- CONTADOR --- */
+  .timer-box {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(4px);
+    padding: 6px;
+    border-radius: 12px;
+    width: 82%;
+    margin-bottom: 12px;
+    border: 1px solid rgba(197, 168, 128, 0.15);
+  }
+  .time .num { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--dark-luxury); display: block; line-height: 1; }
+  .time .lbl { font-size: 0.45rem; text-transform: uppercase; color: #777; }
+  
+  /* --- BOTONES DE ACCIÓN --- */
+  .buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 82%;
+  }
+  
+  .btn-agency {
+    width: 100%;
+    padding: 10px 15px; 
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    background-color: var(--dark-luxury);
+    color: white;
+    box-shadow: 0 4px 10px rgba(20,26,31,0.1);
+    transition: all 0.3s ease;
+  }
+  .btn-agency.gold-btn { background: linear-gradient(135deg, var(--gold-premium), #b3946b); box-shadow: 0 4px 10px rgba(197, 168, 128, 0.2); }
+  .btn-agency:hover { transform: translateY(-1px); }
+  
+  .pulse-effect { animation: buttonPulse 2.5s infinite; }
+  .shake-effect { animation: buttonShake 4s infinite 2s; }
+  
+  @keyframes buttonPulse { 0% { box-shadow: 0 0 0 0 rgba(20, 26, 31, 0.4); } 70% { box-shadow: 0 0 0 6px rgba(20, 26, 31, 0); } 100% { box-shadow: 0 0 0 0 rgba(20, 26, 31, 0); } }
+  @keyframes buttonShake { 0%, 100% { transform: scale(1); } 10%, 20% { transform: scale(0.98) rotate(-0.5deg); } 15%, 25% { transform: scale(1.01) rotate(0.5deg); } 30% { transform: scale(1) rotate(0); } }
+  
+  .audio-control { position: fixed; top: 20px; right: 20px; background: white; border: 1px solid rgba(197,168,128,0.3); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 1000; }
+  .tap-instruction { position: absolute; bottom: -45px; left: 50%; transform: translateX(-50%); font-size: 0.78rem; color: #8d7c68; letter-spacing: 1px; animation: bounce 2s infinite; width: 100%; text-align: center; }
+  @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-4px); } 60% { transform: translateY(-2px); } }
