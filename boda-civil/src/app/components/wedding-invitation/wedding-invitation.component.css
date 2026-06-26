@@ -276,180 +276,180 @@
   /* ==========================================================================
       LA TARJETA INTERACTIVA DE INVITACIÓN (A LA ESPERA ABAJO EN EL FONDO)
     ========================================================================== */
-  .full-content-scroll {
-    display: none; 
-    opacity: 0;
-    transform: translateY(180px); 
-    width: 92%; 
-    max-width: 440px; 
-    /*margin: 30px auto; */
-    z-index: 10; 
-    perspective: 1200px; 
-    box-sizing: border-box;
-  }
-
-  .card-3d-folder {    
-    background: url('../../../assets/paper-texture.png') repeat center center;
-    background-size: 320px auto; /* Mantiene el grano fino y elegante sin pixelarse */
+    .full-content-scroll {
+      display: none; 
+      opacity: 0;
+      transform: translateY(180px); 
+      width: 92%; 
+      max-width: 440px; 
+      /*margin: 30px auto; */
+      z-index: 10; 
+      perspective: 1200px; 
+      box-sizing: border-box;
+    }
+  
+    .card-3d-folder {    
+      background: url('../../../assets/paper-texture.png') repeat center center;
+      background-size: 320px auto; /* Mantiene el grano fino y elegante sin pixelarse */
+      
+      border-radius: 8px; 
+      padding: 0;
+      box-shadow: 0 30px 70px rgba(74, 64, 52, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      transform-style: preserve-3d; 
+      width: 100%; 
+      max-width: 480px;
+      position: relative; 
+      box-sizing: border-box;
+      overflow: hidden;
+    }
     
-    border-radius: 8px; 
-    padding: 0;
-    box-shadow: 0 30px 70px rgba(74, 64, 52, 0.15);
-    border: 1px solid rgba(212, 175, 55, 0.15);
-    transform-style: preserve-3d; 
-    width: 100%; 
-    max-width: 480px;
-    position: relative; 
-    box-sizing: border-box;
-    overflow: hidden;
-  }
+    /* ⚠️ MAESTRO: Desactivamos el recuadro interior que encogía y enjaulaba las imágenes */
+    .inner-border-luxury {
+      border: none !important; 
+      padding: 0 !important; 
+      margin: 0 !important;
+      box-sizing: border-box;
+    }
+      
+    /* Texturas de extremos */
+    .watercolor-top-texture {
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 110px; /* Alto ideal para que la pincelada baje con elegancia */
+      /* Aquí debes apuntar a la imagen de la pincelada de óleo dorada que se ve en el video */
+      background: url('../../../assets/botanical-frame.png') no-repeat top center;
+      background-size: contain;
+      pointer-events: none;
+      z-index: 2;
+    }
   
-  /* ⚠️ MAESTRO: Desactivamos el recuadro interior que encogía y enjaulaba las imágenes */
-  .inner-border-luxury {
-    border: none !important; 
-    padding: 0 !important; 
-    margin: 0 !important;
-    box-sizing: border-box;
-  }
+    .watercolor-bottom-texture {
+      position: absolute; 
+      bottom: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 90px;
+      /* Usamos la misma imagen volteada o la pincelada inferior del video */
+      background: url('../../../assets/botanical-frame.png') no-repeat bottom center;
+      background-size: contain;
+      pointer-events: none;
+      z-index: 2;
+    }
+  
+    /* Encabezado Nombres Novios */  
+    .watercolor-top-texture,
+    .watercolor-bottom-texture {
+      display: none !important;
+    }
+  
+    /* Marco de flores superior que se extiende simétricamente de lado a lado */
+    .card-3d-folder .botanical-header-flowers {
+      position: absolute;
+      top: 0px; /* Ligeramente afuera para un sellado orgánico */
+      left: 0;
+      width: 100%;
+      height: 182px; /* Más alto para que las ramas bajen más sobre el texto */
+      background: url('../../../assets/botanical-top.png') no-repeat top center;
+      background-size: 100% 100%; /* Forzamos a que abarque todo el ancho y caiga */
+      z-index: 10; 
+      pointer-events: none;
+    }
+  
+    .card-header-premium {
+      text-align: center;
+      margin-top: 110px; /* Balanceado con el nuevo padding superior */
+      margin-bottom: 25px;
+    }
+  
+    .romantic-intro-phrase {
+      font-family: 'Cinzel', serif;
+      font-size: 0.60rem;                     /* Escala fina y delicada */
+      letter-spacing: 1.5px;                   /* ⚠️ Tracking amplio para máxima elegancia */
+      line-height: 2;                      /* Excelente respiro vertical entre líneas */
+      color: #aa7c11;                        /* Tono oro viejo/bronce que amarra con tus botones y detalles */
+      text-transform: uppercase;             /* Forzado a mayúsculas estilizadas */
+      font-weight: 600;
+      margin: 0;
+    }
+  
+    .couple-names-premium {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;                       /* Tamaño imponente y elegante */
+      font-weight: 500;
+      color: #6b141b !important;               /* 🎨 CORREGIDO: Tono vino/borgoña premium de alta gama */
+      text-align: center;
+      margin: 10px 0 5px 0;
+      letter-spacing: 0.5px;
+    }
+  
+    .we-marry-sub {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;                      /* Compacto y estilizado */
+      letter-spacing: 3px;                     /* Tracking amplio para máxima distinción */
+      color: #6b141b !important;               /* 🎨 CORREGIDO: Mismo tono vino nupcial */
+      text-transform: uppercase;               /* Forzado a mayúsculas finas */
+      font-weight: 600;
+      text-align: center;
+      margin: 0 auto 20px auto;
+    }
+  
+    /* Medallón Fotográfico */
+    .couple-photo-section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /* ⚠️ Incrementamos el margen inferior a 140px para que las flores tengan espacio abajo sin tapar nada */
+      margin: 60px auto 140px; 
+      width: 100%;
+      box-sizing: border-box;
+    }
     
-  /* Texturas de extremos */
-  .watercolor-top-texture {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 110px; /* Alto ideal para que la pincelada baje con elegancia */
-    /* Aquí debes apuntar a la imagen de la pincelada de óleo dorada que se ve en el video */
-    background: url('../../../assets/botanical-frame.png') no-repeat top center;
-    background-size: contain;
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  .watercolor-bottom-texture {
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 90px;
-    /* Usamos la misma imagen volteada o la pincelada inferior del video */
-    background: url('../../../assets/botanical-frame.png') no-repeat bottom center;
-    background-size: contain;
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  /* Encabezado Nombres Novios */  
-  .watercolor-top-texture,
-  .watercolor-bottom-texture {
-    display: none !important;
-  }
-
-  /* Marco de flores superior que se extiende simétricamente de lado a lado */
-  .card-3d-folder .botanical-header-flowers {
-    position: absolute;
-    top: 0px; /* Ligeramente afuera para un sellado orgánico */
-    left: 0;
-    width: 100%;
-    height: 182px; /* Más alto para que las ramas bajen más sobre el texto */
-    background: url('../../../assets/botanical-top.png') no-repeat top center;
-    background-size: 100% 100%; /* Forzamos a que abarque todo el ancho y caiga */
-    z-index: 10; 
-    pointer-events: none;
-  }
-
-  .card-header-premium {
-    text-align: center;
-    margin-top: 110px; /* Balanceado con el nuevo padding superior */
-    margin-bottom: 25px;
-  }
-
-  .romantic-intro-phrase {
-    font-family: 'Cinzel', serif;
-    font-size: 0.60rem;                     /* Escala fina y delicada */
-    letter-spacing: 1.5px;                   /* ⚠️ Tracking amplio para máxima elegancia */
-    line-height: 2;                      /* Excelente respiro vertical entre líneas */
-    color: #aa7c11;                        /* Tono oro viejo/bronce que amarra con tus botones y detalles */
-    text-transform: uppercase;             /* Forzado a mayúsculas estilizadas */
-    font-weight: 600;
-    margin: 0;
-  }
-
-  .couple-names-premium {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.6rem;                       /* Tamaño imponente y elegante */
-    font-weight: 500;
-    color: #6b141b !important;               /* 🎨 CORREGIDO: Tono vino/borgoña premium de alta gama */
-    text-align: center;
-    margin: 10px 0 5px 0;
-    letter-spacing: 0.5px;
-  }
-
-  .we-marry-sub {
-    font-family: 'Cinzel', serif;
-    font-size: 0.72rem;                      /* Compacto y estilizado */
-    letter-spacing: 3px;                     /* Tracking amplio para máxima distinción */
-    color: #6b141b !important;               /* 🎨 CORREGIDO: Mismo tono vino nupcial */
-    text-transform: uppercase;               /* Forzado a mayúsculas finas */
-    font-weight: 600;
-    text-align: center;
-    margin: 0 auto 20px auto;
-  }
-
-  /* Medallón Fotográfico */
-  .couple-photo-section {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* ⚠️ Incrementamos el margen inferior a 140px para que las flores tengan espacio abajo sin tapar nada */
-    margin: 60px auto 140px; 
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  /* El círculo del retrato limpio y nítido */
-  .photo-circle-frame {
-    width: 210px;        
-    height: 210px;
-    border-radius: 50%;
-    overflow: hidden;    
-    border: 4px solid #ffffff; 
-    box-shadow: 0 15px 40px rgba(74, 64, 52, 0.1);
-    z-index: 2;          /* La foto se mantiene fija por detrás */
-    position: relative;
-    display: block;
-  }
-  
-  .couple-portrait {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;   
-    display: block;
-  }
-  
-  /* 🌹 LA GUIRNALDA BAJA EXCLUSIVAMENTE A LA BASE (REPARADO DEFINITIVO) */
-  .couple-photo-section .botanical-garland-embrace {
-    position: absolute;   
-    top: 40%;
-    left: 50%;        
-    transform: translate(-45%, -32%) rotate(40deg);    
-    width: 100%; 
-    height: 161%;    
-    background: url('../../../assets/couple-main.png') no-repeat center center;
-    background-size: contain;    
-    overflow: visible;
-    z-index: 3; 
-    pointer-events: none;
-  }
-  
-  /* Botón Central de Cámara */
-  .gallery-trigger-center-section { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin: 25px 0 35px; cursor: pointer; }
-  
-  .gold-icon-circle-center-btn { width: 60px; height: 60px; border-radius: 50%; background: #ffffff; border: 1px solid var(--color-gold); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(170, 124, 17, 0.08); }
-  
-  .btn-label-premium { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 2px; color: #aa7c11; font-weight: 600; }
+    /* El círculo del retrato limpio y nítido */
+    .photo-circle-frame {
+      width: 210px;        
+      height: 210px;
+      border-radius: 50%;
+      overflow: hidden;    
+      border: 4px solid #ffffff; 
+      box-shadow: 0 15px 40px rgba(74, 64, 52, 0.1);
+      z-index: 2;          /* La foto se mantiene fija por detrás */
+      position: relative;
+      display: block;
+    }
+    
+    .couple-portrait {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;   
+      display: block;
+    }
+    
+    /* 🌹 LA GUIRNALDA BAJA EXCLUSIVAMENTE A LA BASE (REPARADO DEFINITIVO) */
+    .couple-photo-section .botanical-garland-embrace {
+      position: absolute;
+      bottom: -103px;
+      left: 52%;
+      transform: translateX(-48%) rotate(40deg);
+      width: 320px;
+      height: 342px;
+      background: url(../../../assets/couple-main.png) no-repeat center bottom;
+      background-size: contain;
+      overflow: visible;
+      z-index: 3;
+      pointer-events: none;
+    }
+    
+    /* Botón Central de Cámara */
+    .gallery-trigger-center-section { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin: 25px 0 35px; cursor: pointer; }
+    
+    .gold-icon-circle-center-btn { width: 60px; height: 60px; border-radius: 50%; background: #ffffff; border: 1px solid var(--color-gold); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(170, 124, 17, 0.08); }
+    
+    .btn-label-premium { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 2px; color: #aa7c11; font-weight: 600; }
 
    /* Bendición de Padres */
    .parents-blessing-section {
@@ -588,7 +588,7 @@
     margin-bottom: 30px; 
     border-bottom: none;
   }
-
+  
   .interactive-item-row:hover { background: rgba(244, 239, 230, 0.3); }
   .link-card-wrapper { display: flex; }
   
