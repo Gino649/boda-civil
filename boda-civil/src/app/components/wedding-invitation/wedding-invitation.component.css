@@ -367,17 +367,18 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;   
-    margin: clamp(40px, 8vw, 60px) auto clamp(110px, 24vw, 150px); 
+    align-items: center;
+    justify-content: center;    
     width: 100%;
+    max-width: 320px; 
+    margin: 40px auto 120px auto; 
     box-sizing: border-box;
   }
 
   /* El círculo del retrato limpio y nítido */
-  .photo-circle-frame {
-    width: clamp(170px, 45vw, 210px);        
-    height: clamp(170px, 45vw, 210px);
+  .photo-circle-frame {    
+    width: 65%; 
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     overflow: hidden;    
     border: 4px solid #ffffff; 
@@ -396,16 +397,16 @@
 
   /* 🌹 LA GUIRNALDA BAJA EXCLUSIVAMENTE A LA BASE (RESPONSIVA) */
   .couple-photo-section .botanical-garland-embrace {
-    position: absolute;    
-    bottom: clamp(-75px, -18vw, -103px);
-    left: 50%;
-    transform: translateX(-50%) rotate(40deg); 
-    width: clamp(240px, 68vw, 320px);
-    height: clamp(260px, 72vw, 342px);
-    background: url(../../../assets/couple-main.png) no-repeat center bottom;
-    background-size: contain;
+    position: absolute;   
+    top: 40%;
+    left: 50%;        
+    transform: translate(-45%, -32%) rotate(40deg);    
+    width: 100%; 
+    height: 161%;    
+    background: url('../../../assets/couple-main.png') no-repeat center center;
+    background-size: contain;    
     overflow: visible;
-    z-index: 3;
+    z-index: 3; 
     pointer-events: none;
   }
 
