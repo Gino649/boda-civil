@@ -12,5 +12,5 @@ registerSwiper();
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {  
-  title = 'Nuestra Boda Civil';
+  title = 'G&C Nuestra Boda Civil';
 }

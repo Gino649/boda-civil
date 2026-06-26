@@ -268,18 +268,17 @@
     margin-top: 35px; font-size: 0.75rem; letter-spacing: 3px;
     text-transform: uppercase; color: var(--color-gold-dark); font-weight: 500;
     animation: pulse 2s infinite ease-in-out; text-align: center;
-  }
-    
-  /* ==========================================================================
-      LA TARJETA INTERACTIVA DE INVITACIÓN (A LA ESPERA ABAJO EN EL FONDO)
-    ========================================================================== */
+  }    
+
+   /* ==========================================================================
+    LA TARJETA INTERACTIVA DE INVITACIÓN (OPTIMIZADA PARA MÓVILES)
+   ========================================================================== */
   .full-content-scroll {
     display: none; 
     opacity: 0;
     transform: translateY(180px); 
-    width: 92%; 
+    width: 95%; 
     max-width: 440px; 
-    /*margin: 30px auto; */
     z-index: 10; 
     perspective: 1200px; 
     box-sizing: border-box;
@@ -287,94 +286,66 @@
 
   .card-3d-folder {    
     background: url('../../../assets/paper-texture.png') repeat center center;
-    background-size: 320px auto; /* Mantiene el grano fino y elegante sin pixelarse */
+    background-size: 320px auto; 
     
-    border-radius: 4px; 
+    border-radius: 8px; 
     padding: 0;
     box-shadow: 0 30px 70px rgba(74, 64, 52, 0.15);
     border: 1px solid rgba(212, 175, 55, 0.15);
     transform-style: preserve-3d; 
     width: 100%; 
+    max-width: 480px;
     position: relative; 
     box-sizing: border-box;
+    overflow: hidden;
   }
-  
-  /* ⚠️ MAESTRO: Desactivamos el recuadro interior que encogía y enjaulaba las imágenes */
+
+  /* Desactivamos el recuadro interior */
   .inner-border-luxury {
     border: none !important; 
     padding: 0 !important; 
     margin: 0 !important;
     box-sizing: border-box;
   }
-    
-  /* Texturas de extremos */
-  .watercolor-top-texture {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 110px; /* Alto ideal para que la pincelada baje con elegancia */
-    /* Aquí debes apuntar a la imagen de la pincelada de óleo dorada que se ve en el video */
-    background: url('../../../assets/botanical-frame.png') no-repeat top center;
-    background-size: contain;
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  .watercolor-bottom-texture {
-    position: absolute; 
-    bottom: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 90px;
-    /* Usamos la misma imagen volteada o la pincelada inferior del video */
-    background: url('../../../assets/botanical-frame.png') no-repeat bottom center;
-    background-size: contain;
-    pointer-events: none;
-    z-index: 2;
-  }
-
-  /* Encabezado Nombres Novios */  
-  .watercolor-top-texture,
-  .watercolor-bottom-texture {
-    display: none !important;
-  }
 
   /* Marco de flores superior que se extiende simétricamente de lado a lado */
   .card-3d-folder .botanical-header-flowers {
     position: absolute;
-    top: 0px; /* Ligeramente afuera para un sellado orgánico */
+    top: 0;
     left: 0;
-    width: 100%;
-    height: 182px; /* Más alto para que las ramas bajen más sobre el texto */
+    width: 100%;    
+    height: clamp(100px, 20vw, 160px); 
     background: url('../../../assets/botanical-top.png') no-repeat top center;
-    background-size: 100% 100%; /* Forzamos a que abarque todo el ancho y caiga */
-    z-index: 10; 
+    background-size: 100% 100%; 
+    z-index: 1; 
     pointer-events: none;
   }
-
+  
   .card-header-premium {
-    text-align: center;
-    margin-top: 110px; /* Balanceado con el nuevo padding superior */
+    text-align: center;    
+    margin-top: clamp(60px, 20vw, 150px); 
     margin-bottom: 25px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2; 
   }
 
   .romantic-intro-phrase {
     font-family: 'Cinzel', serif;
-    font-size: 0.60rem;                     /* Escala fina y delicada */
-    letter-spacing: 1.5px;                   /* ⚠️ Tracking amplio para máxima elegancia */
-    line-height: 2;                      /* Excelente respiro vertical entre líneas */
-    color: #aa7c11;                        /* Tono oro viejo/bronce que amarra con tus botones y detalles */
-    text-transform: uppercase;             /* Forzado a mayúsculas estilizadas */
+    font-size: clamp(0.55rem, 1.8vw, 0.65rem); 
+    letter-spacing: 0.5px;                   
+    line-height: 2;                      
+    color: #aa7c11;                        
+    text-transform: uppercase;             
     font-weight: 600;
     margin: 0;
   }
 
   .couple-names-premium {
     font-family: 'Playfair Display', serif;
-    font-size: 2.6rem;                       /* Tamaño imponente y elegante */
+    font-size: clamp(1.9rem, 7vw, 2.6rem); 
     font-weight: 500;
-    color: #6b141b !important;               /* 🎨 CORREGIDO: Tono vino/borgoña premium de alta gama */
+    color: #6b141b !important;               
     text-align: center;
     margin: 10px 0 5px 0;
     letter-spacing: 0.5px;
@@ -382,10 +353,10 @@
 
   .we-marry-sub {
     font-family: 'Cinzel', serif;
-    font-size: 0.72rem;                      /* Compacto y estilizado */
-    letter-spacing: 3px;                     /* Tracking amplio para máxima distinción */
-    color: #6b141b !important;               /* 🎨 CORREGIDO: Mismo tono vino nupcial */
-    text-transform: uppercase;               /* Forzado a mayúsculas finas */
+    font-size: clamp(0.60rem, 2vw, 0.72rem); 
+    letter-spacing: 3px;                     
+    color: #6b141b !important;               
+    text-transform: uppercase;               
     font-weight: 600;
     text-align: center;
     margin: 0 auto 20px auto;
@@ -397,54 +368,84 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    /* ⚠️ Incrementamos el margen inferior a 140px para que las flores tengan espacio abajo sin tapar nada */
-    margin: 60px auto 140px; 
+    align-items: center;   
+    margin: clamp(40px, 8vw, 60px) auto clamp(110px, 24vw, 150px); 
     width: 100%;
     box-sizing: border-box;
   }
-  
+
   /* El círculo del retrato limpio y nítido */
   .photo-circle-frame {
-    width: 210px;        
-    height: 210px;
+    width: clamp(170px, 45vw, 210px);        
+    height: clamp(170px, 45vw, 210px);
     border-radius: 50%;
     overflow: hidden;    
     border: 4px solid #ffffff; 
     box-shadow: 0 15px 40px rgba(74, 64, 52, 0.1);
-    z-index: 2;          /* La foto se mantiene fija por detrás */
+    z-index: 2;          
     position: relative;
     display: block;
   }
-  
+
   .couple-portrait {
     width: 100%;
     height: 100%;
     object-fit: cover;   
     display: block;
   }
-  
-  /* 🌹 LA GUIRNALDA BAJA EXCLUSIVAMENTE A LA BASE (REPARADO DEFINITIVO) */
+
+  /* 🌹 LA GUIRNALDA BAJA EXCLUSIVAMENTE A LA BASE (RESPONSIVA) */
   .couple-photo-section .botanical-garland-embrace {
-    position: absolute;
-    bottom: -103px;
-    left: 52%;
-    transform: translateX(-48%) rotate(40deg);
-    width: 320px;
-    height: 342px;
+    position: absolute;    
+    bottom: clamp(-70px, -18vw, -103px);
+    left: 50%;
+    transform: translateX(-50%) rotate(40deg); 
+    width: clamp(240px, 68vw, 320px);
+    height: clamp(260px, 72vw, 342px);
     background: url(../../../assets/couple-main.png) no-repeat center bottom;
     background-size: contain;
     overflow: visible;
     z-index: 3;
     pointer-events: none;
   }
-  
+
   /* Botón Central de Cámara */
-  .gallery-trigger-center-section { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin: 25px 0 35px; cursor: pointer; }
-  
-  .gold-icon-circle-center-btn { width: 60px; height: 60px; border-radius: 50%; background: #ffffff; border: 1px solid var(--color-gold); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(170, 124, 17, 0.08); }
-  
-  .btn-label-premium { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 2px; color: #aa7c11; font-weight: 600; }
+  .gallery-trigger-center-section { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 8px; 
+    margin: 25px 0 35px; 
+    cursor: pointer; 
+    -webkit-tap-highlight-color: transparent; 
+  }
+
+  .gold-icon-circle-center-btn { 
+    width: clamp(50px, 12vw, 60px); 
+    height: clamp(50px, 12vw, 60px); 
+    border-radius: 50%; 
+    background: #ffffff; 
+    border: 1px solid var(--color-gold); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    box-shadow: 0 6px 15px rgba(170, 124, 17, 0.08); 
+  }
+
+  .btn-label-premium { 
+    font-family: 'Cinzel', serif; 
+    font-size: clamp(0.65rem, 1.8vw, 0.72rem); 
+    letter-spacing: 2px; 
+    color: #aa7c11; 
+    font-weight: 600; 
+  } 
+
+
+
+
+
+
 
    /* Bendición de Padres */
    .parents-blessing-section {
@@ -528,11 +529,8 @@
 
   /* ⚠️ NUEVO AJUSTE: Empujamos la frase romántica y la fecha hacia abajo y la derecha */
   .date-hero-content-box .romantic-phrase-mid,
-  .date-hero-content-box .grand-date-display {
-    /* Empuja los textos hacia abajo para que no choquen con el techo de la montaña */
-    margin-top: 15px; 
-    /* 🧠 TRUCO DE DESPLAZAMIENTO: Mueve sutilmente los textos 15 píxeles a la derecha, 
-      alejándolos físicamente de las hojas secas de la izquierda sin romper el centrado del celular */
+  .date-hero-content-box .grand-date-display {    
+    margin-top: 15px;     
     transform: translateX(15px); 
   }
 
@@ -1094,4 +1092,61 @@
   .material-icons {
     font-size: 19px;
     color: #aa7c11;
+  } 
+
+  /* ==========================================================================
+   📱 5. ADAPTACIÓN ABSOLUTA EN TIEMPO REAL PARA CELULARES (MEDIA QUERY DEFINITIVA)
+   ========================================================================== */
+@media (max-width: 576px) {
+  /* Aligeramos los rellenos externos para ganar espacio en pantallas angostas */
+  .full-content-scroll {
+    padding: 10px 8px;
   }
+
+  .card-3d-folder {
+    border-radius: 4px;
+  }
+
+  .inner-border-luxury {
+    margin: 8px;
+    padding: 24px 12px; /* Más aire horizontal dentro del celular */
+  }
+
+  /* Escalado fluido de textos en cabecera */
+  .couple-names-premium {
+    font-size: 2.2rem; /* Reduce sutilmente para evitar cortes de palabra */
+  }
+
+  /* Ajuste de escala para el retrato en pantallas chicas */
+  .photo-circle-frame {
+    width: 170px;
+    height: 170px;
+  }
+
+  /* 🧠 EL TRUCO PARA LA MONTAÑA: Duplicamos el espacio vertical en el móvil */
+  .date-hero-section-wrapper {
+    padding: 80px 8px 130px; 
+  }
+
+  .date-hero-section-wrapper .mid-watercolor-background {
+    /* Clava las flores a la izquierda y fuerza a que la montaña baje */
+    background-position: left top;
+    background-size: 100% auto;
+  }
+
+  .romantic-phrase-mid {
+    font-size: 0.62rem;
+    letter-spacing: 2.2px;
+    margin-top: 50px; /* Cojín de aire milimétrico para salvar la ilustración */
+  }
+
+  .grand-date-display {
+    font-size: 2rem;
+  }
+
+  /* Reacomodo de iconos y textos de mapas en pantallas táctiles compactas */
+  .interactive-item-row {
+    gap: 12px;
+    padding: 12px 6px;
+  }
+}
