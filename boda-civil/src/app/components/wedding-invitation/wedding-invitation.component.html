@@ -85,13 +85,10 @@
         </header>
   
         <!-- 2. MEDALLÓN FOTOGRÁFICO CENTRAL (CON CORONA FLORAL INFERIOR) -->
-        <section class="couple-photo-section">  
-          <!-- El círculo contenedor únicamente para el retrato de los novios -->
+        <section class="couple-photo-section">            
           <div class="photo-circle-frame">
-            <!-- ⚠️ REPARADO: Solo debe existir la etiqueta de la imagen aquí adentro -->
-            <img src="assets/images/couple-main.jpg" alt="Edgar & Elizabeth" class="couple-portrait">
-          </div>        
-          <!-- La guirnalda que rodea el círculo desde afuera de forma simétrica -->
+            <img src="assets/foto_centro.jpeg" alt="Gino & Claudia" class="couple-portrait" />
+          </div> 
           <div class="botanical-garland-embrace"></div>        
         </section>
   
@@ -101,6 +98,14 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#AA7C11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 35px; height: 35px;">
               <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
               <circle cx="12" cy="13" r="4"></circle>
+            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#AA7C11" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="click-hand-indicator">
+              <!-- Dedo índice apuntando arriba y sutilmente a la izquierda -->
+              <path d="M10 11V6a2 2 0 0 1 4 0v5" />
+              <!-- Resto de los dedos curvados del guante -->
+              <path d="M14 10.5a2 2 0 0 1 4 0v1.5a2 2 0 0 1 4 0V14a7 7 0 0 1-14 0v-3a2 2 0 0 1 4 0v.5" />
+              <!-- Dedo pulgar al costado -->
+              <path d="M6 14V11a2 2 0 0 1 2-2h2" />
             </svg>
           </div>
           <span class="btn-label-premium">NUESTRAS FOTOS</span>
@@ -120,12 +125,10 @@
   
         <!-- 5. FRASE SECUNDARIA Y FECHA MONUMENTAL -->
         <section class="date-hero-section-wrapper"> 
-  
-          <!-- 🌸 CAPAS DE FONDO DE ALTA COSTURA (Aisladas al inicio del contenedor) -->
+            
           <div class="mid-watercolor-background"></div>        
-          <div class="mid-watercolor-background-footer"></div>  
-        
-          <!-- 📦 BLOQUE 1: CONTENIDO HERO (Frase, Fecha y Cuenta Regresiva) -->
+          <div class="mid-watercolor-background-footer"></div>          
+          
           <div class="date-hero-content-box">
             <p class="romantic-phrase-mid">
               Queremos compartir con ustedes<br>
@@ -146,55 +149,51 @@
               </div>
             </div> 
           </div>
-        
-          <!-- 📦 BLOQUE 2: CONTENEDOR DE TARJETAS INTERACTIVAS (Para control del Scroll Móvil) -->
+                  
           <div class="interactive-cards-container">
             
-            <!-- ⛪ FILA: CEREMONIA CIVIL -->
-            <a href="https://google.com" target="_blank" class="interactive-item-row link-card-wrapper">
+            <!-- ⛪ 6. FILA: CEREMONIA CIVIL (Ahora abre el modal dinámico) -->
+            <div (click)="openMapModal('ceremonia')" class="interactive-item-row link-card-wrapper">
               <div class="icon-column">
                 <div class="gold-icon-circle">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#AA7C11" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="inline-svg-icon">
-                    <path d="M12 2L2 9h20L12 2z"></path>
-                    <path d="M5 9v11M19 9v11"></path>
-                    <path d="M9 20v-5a3 3 0 0 1 6 0v5"></path>
-                    <path d="M12 2v2M11 3h2"></path>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#AA7C11" stroke-width="1.3" class="inline-svg-icon">
+                    <path d="M12 2L2 9h20L12 2zM5 9v11M19 9v11M9 20v-5a3 3 0 0 1 6 0v5M12 2v2M11 3h2"/>
+                  </svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#AA7C11" stroke-width="1.5" class="click-hand-indicator">
+                    <path d="M10 11V6a2 2 0 0 1 4 0v5" /><path d="M14 10.5a2 2 0 0 1 4 0v1.5a2 2 0 0 1 4 0V14a7 7 0 0 1-14 0v-3a2 2 0 0 1 4 0v.5" /><path d="M6 14V11a2 2 0 0 1 2-2h2" />
                   </svg>
                 </div>
                 <span class="icon-tag">CEREMONIA</span>
               </div>
-              
               <div class="text-info-column text-left-align">
                 <h3 class="event-title-text">Ceremonia Civil</h3>
                 <p class="place-text-bold">Municipalidad Santiago de Surco</p>
                 <p class="address-text-sub">Av. Monte de los Olivos 545, Urb. Prolg. Benavides</p>
                 <p class="time-text-premium">12:00 pm</p>
               </div>
-            </a>
-        
-            <!-- 🥂 FILA: RECEPCIÓN / CELEBRACIÓN -->
-            <a href="https://google.com" target="_blank" class="interactive-item-row link-card-wrapper">
+            </div>
+
+            <!-- 🥂 7. FILA: RECEPCIÓN (Usa la misma función pero con parámetro 'recepcion') -->
+            <div (click)="openMapModal('recepcion')" class="interactive-item-row link-card-wrapper">
               <div class="icon-column">
                 <div class="gold-icon-circle">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#AA7C11" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="inline-svg-icon">
-                    <path d="M7 3h4v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V3z"></path>
-                    <path d="M9 9v6M7 15h4"></path>
-                    <path d="M13 3h4v4a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V3z"></path>
-                    <path d="M15 9v6M13 15h4"></path>
-                    <path d="M12 2l.5 1M11.5 2.5h1"></path>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#AA7C11" stroke-width="1.3" class="inline-svg-icon">
+                    <path d="M7 3h4v4a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V3zM9 9v6M7 15h4M13 3h4v4a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V3zM15 9v6M13 15h4M12 2l.5 1M11.5 2.5h1"/>
+                  </svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#AA7C11" stroke-width="1.5" class="click-hand-indicator">
+                    <path d="M10 11V6a2 2 0 0 1 4 0v5" /><path d="M14 10.5a2 2 0 0 1 4 0v1.5a2 2 0 0 1 4 0V14a7 7 0 0 1-14 0v-3a2 2 0 0 1 4 0v.5" /><path d="M6 14V11a2 2 0 0 1 2-2h2" />
                   </svg>
                 </div>
                 <span class="icon-tag">CELEBREMOS</span>
               </div>
-              
               <div class="text-info-column text-left-align">
                 <h3 class="event-title-text">Recepción</h3>
                 <p class="place-text-bold">Condominio Espacio Ferre</p>
-                <p class="address-text-sub">Jr, Prolonagación Teniente Diego Ferre</p>
+                <p class="address-text-sub">Jr. Prolongación Teniente Diego Ferre 620</p>
                 <p class="time-text-premium">3:00 p.m. - 11:00 p.m.</p>
               </div>
-            </a>
-            
+            </div>
+                        
           </div>
         
         </section>   
@@ -292,7 +291,40 @@
           <swiper-slide><img src="assets/images/couple1.jpg" alt="Foto 1" class="modal-slide-img"></swiper-slide>
           <swiper-slide><img src="assets/images/couple2.jpg" alt="Foto 2" class="modal-slide-img"></swiper-slide>
           <swiper-slide><img src="assets/images/couple3.jpg" alt="Foto 3" class="modal-slide-img"></swiper-slide>
+          <swiper-slide><img src="assets/images/couple4.jpg" alt="Foto 4" class="modal-slide-img"></swiper-slide>
         </swiper-container>
+      </div>
+    </div>
+  }
+
+  @if (isMapModalOpen) {
+    <div class="luxury-modal-overlay" (click)="closeMapModal()" #modalOverlay>
+      <div class="luxury-modal-card" (click)="$event.stopPropagation()" #modalCard>
+        
+        <div class="modal-header">
+          <h4 class="modal-title">{{ activeModalData.title }}</h4>
+          <button class="modal-close-btn" (click)="closeMapModal()">&times;</button>
+        </div>
+  
+        <!-- ⚠️ NOTA: [src] lleva corchetes para que Angular acepte la URL segura -->
+        <div class="modal-body-map">
+          <iframe 
+            [src]="activeModalData.embedUrl"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+  
+        <div class="modal-footer">
+          <a [href]="activeModalData.gpsUrl" target="_blank" class="btn-gps-external">
+            Abrir con GPS del Celular
+          </a>
+        </div>
+  
       </div>
     </div>
   }

@@ -418,7 +418,7 @@
       aspect-ratio: 1 / 1;
       border-radius: 50%;
       overflow: hidden;    
-      border: 4px solid #ffffff; 
+      border: 4px solid #d4af3759; 
       box-shadow: 0 15px 40px rgba(74, 64, 52, 0.1);
       z-index: 2;          
       position: relative;
@@ -430,6 +430,7 @@
       height: 100%;
       object-fit: cover;   
       display: block;
+      object-position: center 4%; 
     }
     
     /* 🌹 LA GUIRNALDA BAJA EXCLUSIVAMENTE A LA BASE (REPARADO DEFINITIVO) */
@@ -437,9 +438,9 @@
       position: absolute;   
       top: 40%;
       left: 50%;        
-      transform: translate(-45%, -32%) rotate(40deg);    
+      transform: translate(-48%, -33%) rotate(42deg);    
       width: 100%; 
-      height: 161%;    
+      height: 152%;    
       background: url('../../../assets/couple-main.png') no-repeat center center;
       background-size: contain;    
       overflow: visible;
@@ -479,46 +480,74 @@
       font-weight: 600; 
     } 
 
-   /* Bendición de Padres */
-   .parents-blessing-section {
-    text-align: center;
-    margin: 35px auto 20px;
-    width: 100%;
-    box-sizing: border-box;
-  }
+    .gold-icon-circle, 
+    .gold-icon-circle-center-btn {
+      position: relative; 
+    }
 
-  .blessing-title {
-    font-family: 'Cinzel', serif;
-    font-size: 0.65rem;
-    letter-spacing: 2.2px;                 
-    color: #aa7c11; /* 🎨 Enlazado con tus iconos dorados */
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-bottom: 22px;
-  }
+    .click-hand-indicator {
+      position: absolute;
+      bottom: -4px;
+      right: -14px;
+      width: 30px;
+      height: 30px;
+      background: transparent !important;
+      box-shadow: none !important;
+      padding: 0;
+      z-index: 10;
+      transform: rotate(-25deg);
+      animation: diagonalClickPulse 2s infinite ease-in-out;
+    }
+    
+    @keyframes diagonalClickPulse {
+      0%, 100% {
+        transform: rotate(-25deg) translate(0, 0) scale(1);
+      }
+      50% {
+        transform: rotate(-25deg) translate(-2px, -2px) scale(0.9);
+      }
+    }
 
-  .parents-names-column {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
+    /* Bendición de Padres */
+    .parents-blessing-section {
+      text-align: center;
+      margin: 35px auto 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-  .parent-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;                     /* Escala perfecta y delicada para el bloque */
-    font-weight: 500;
-    color: #6b141b !important;                            /* Un carbón oscuro, nítido y muy legible */
-    margin: 0;
-    letter-spacing: 0.5px;
-    text-align: center;
-  }
+    .blessing-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 2.2px;                 
+      color: #aa7c11; /* 🎨 Enlazado con tus iconos dorados */
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
 
-  .parent-separator {
-    font-family: 'Playfair Display', serif;
-    color: #aa7c11;                        /* Tono bronce/oro viejo que amarra con tus iconos */
-    font-size: 1.1rem;
-    margin: 10px 0;
-  }
+    .parents-names-column {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .parent-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;                     /* Escala perfecta y delicada para el bloque */
+      font-weight: 500;
+      color: #6b141b !important;                            /* Un carbón oscuro, nítido y muy legible */
+      margin: 0;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .parent-separator {
+      font-family: 'Playfair Display', serif;
+      color: #aa7c11;                        /* Tono bronce/oro viejo que amarra con tus iconos */
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
 
   
   /* ==========================================================================
@@ -547,25 +576,24 @@
     width: 100%;
     height: 100%; 
     background: url('../../../assets/botanical-frame-header.png') no-repeat center top;
-    background-size: 138% auto; 
+    background-size: 127% auto; 
     pointer-events: none;
     z-index: 1;
     mix-blend-mode: multiply;
   }
 
-  .mid-watercolor-background-footer {
+  /*.mid-watercolor-background-footer {
     position: absolute;
-    /* El secreto maestro: Se ancla a la base del contenedor global y se estira */
-    bottom: -10px; 
+    bottom: 0px; 
     left: 0;
     width: 100%;
-    height: clamp(140px, 25vw, 180px); /* Ajuste dinámico de la pincelada */
+    height: clamp(40px, 25vw, 160px); 
     background: url('../../../assets/botanical-frame-footer.png') no-repeat center bottom;
     background-size: 100% auto; 
     pointer-events: none;
     z-index: 1;
     mix-blend-mode: multiply;
-  }
+  }*/
   
   .date-hero-content-box {
     position: relative;
@@ -578,8 +606,8 @@
   /* ⚠️ NUEVO AJUSTE: Empujamos la frase romántica y la fecha hacia abajo y la derecha */
   .date-hero-content-box .romantic-phrase-mid
   {    
-    margin-top: 15px;     
-    transform: translateX(40px); 
+    margin-top: 12px;     
+    transform: translateX(48px); 
   }
 
   .romantic-phrase-mid { 
@@ -597,7 +625,7 @@
     font-size: clamp(2rem, 7vw, 2.6rem); 
     font-weight: 400; 
     letter-spacing: 4px; 
-    margin: 15px auto 25px;
+    margin: 10px auto 20px;
     display: inline-block;
     text-align: center;
     background: linear-gradient(135deg, #aa7c11 0%, #d4af37 100%); 
@@ -766,28 +794,125 @@
   
 
   /* ==========================================================================
-    📸 POPUP MODAL: ÁLBUM DE RECUERDOS (MÓDULO EMERGENTE)
+    📸 ÁLBUM DE RECUERDOS INTELIGENTE (SOPORTA FOTOS VERTICALES Y HORIZONTALES)
     ========================================================================== */
   .gallery-modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(42, 35, 27, 0.7); backdrop-filter: blur(4px);
-    display: flex; justify-content: center; align-items: center; z-index: 200;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
+    height: 100dvh; 
+    background: rgba(42, 35, 27, 0.45); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px);
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 99999; 
+    padding: 16px;
+    box-sizing: border-box;
   }
+
   .gallery-modal-card {
-    background: #ffffff; width: 88%; max-width: 380px; border-radius: 6px;
-    padding: 20px; box-sizing: border-box; position: relative;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 1px solid var(--color-gold);
+    background: #FDFBF7; 
+    width: 100%; 
+    max-width: 380px; 
+    border-radius: 12px; 
+    padding: 0; 
+    overflow: hidden;
+    box-sizing: border-box; 
+    position: relative;
+    box-shadow: 0 30px 65px rgba(44, 38, 32, 0.25); 
+    border: 1px solid rgba(212, 175, 55, 0.25);
   }
+
   .close-modal-btn {
-    position: absolute; top: 10px; right: 14px; background: transparent;
-    border: none; font-size: 1.8rem; color: #888; cursor: pointer; line-height: 1;
+    position: absolute; 
+    top: 14px; 
+    right: 18px; 
+    background: transparent;
+    border: none; 
+    font-size: 1.6rem; 
+    color: #aa7c11; 
+    cursor: pointer; 
+    line-height: 1;
+    z-index: 50; 
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+
+    &:active {
+      transform: scale(0.85);
+    }
   }
 
-  .close-modal-btn:hover { color: #333; }
-  .modal-gallery-title { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--color-gold-dark); margin-top: 0; margin-bottom: 20px; letter-spacing: 1.5px; text-align: center; }
-  .gallery-modal-card swiper-container { width: 100%; height: 260px; border-radius: 4px; }
-  .modal-slide-img { width: 100%; height: 100%; object-fit: cover; }
+  .modal-gallery-title { 
+    font-family: 'Cinzel', serif; 
+    font-size: 0.82rem; 
+    color: #6b141b; 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    letter-spacing: 2px; 
+    text-transform: uppercase;
+    text-align: center; 
+    font-weight: 600;
+  }
 
+  /* ==========================================================================
+      ⚙️ CONTENEDOR FLEXIBLE DE RECUERDOS (EL SECRETO DE ADAPTACIÓN)
+    ========================================================================== */
+  .gallery-modal-card swiper-container { 
+    width: 100%; 
+    /* ⚠️ PASO 1: Cambiamos el alto fijo a una proporción de aspecto vertical estilizada. */
+    /* Si la foto es horizontal, dejará franjas limpias de papel marfil arriba y abajo sin aplastarse. */
+    aspect-ratio: 4 / 5; 
+    height: auto; 
+    background: #f7f3ed; 
+    display: block;
+  }
+
+  .modal-slide-img { 
+    width: 100%; 
+    height: 100%; 
+    /* ⚠️ PASO 2: EL COMANDO MAESTRO */
+    /* 'contain' respeta las proporciones de la ilustración. Si es vertical se estira a lo alto, */
+    /* si es horizontal se encuadra a lo ancho de forma perfecta y elegante, sin deformar los rostros. */
+    object-fit: contain !important; 
+    display: block;
+  }
+
+  /* ==========================================================================
+      🎨 DISEÑO PREMIUM SHADOW DOM (FLECHAS DORADAS ULTRA DELGADAS)
+    ========================================================================== */
+  swiper-container::part(button-next),
+  swiper-container::part(button-prev) {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    color: #aa7c11 !important; 
+    --swiper-navigation-size: 14px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  swiper-container::part(pagination) {
+    bottom: 15px;
+  }
+
+  swiper-container::part(bullet) {
+    background: #C5A880;
+    opacity: 0.4;
+  }
+
+  swiper-container::part(bullet-active) {
+    background: #6b141b;
+    opacity: 1;
+    width: 16px; 
+    border-radius: 4px;
+  }
 
   .card-3d-folder .inner-border { border: 1px solid var(--color-gold); padding: 40px 20px; text-align: center; }
   .card-header { margin-bottom: 40px; }
@@ -1155,3 +1280,100 @@
     font-size: 19px;
     color: #aa7c11;
   }  
+
+  /* ==========================================================================
+   ESTILOS PREMIUM PARA EL MODAL DINÁMICO (CRISTAL ESMERILADO)
+   ========================================================================== */
+.luxury-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: rgba(44, 38, 32, 0.4); 
+  backdrop-filter: blur(10px); /* Efecto difuminado de alta gama */
+  -webkit-backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  box-sizing: border-box;
+  z-index: 99999; /* Asegura que flote por encima de la tarjeta */
+}
+
+.luxury-modal-card {
+  width: 100%;
+  max-width: 420px;
+  background: #FDFBF7; /* Fondo marfil */
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(170, 124, 17, 0.1);
+
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #6b141b; /* Tono vino */
+    margin: 0;
+  }
+
+  .modal-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.6rem;
+    color: #aa7c11;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.modal-body-map {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Cuadrado perfecto en celulares */
+  background: #f5f0e9;
+  position: relative;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+.modal-footer {
+  padding: 16px;
+  background: #FDFBF7;
+}
+
+.btn-gps-external {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #aa7c11; /* Botón dorado */
+  color: #ffffff !important;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(170, 124, 17, 0.15);
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  text-transform: uppercase;
+}

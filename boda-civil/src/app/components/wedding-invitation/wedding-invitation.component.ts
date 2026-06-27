@@ -1,6 +1,13 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, signal, CUSTOM_ELEMENTS_SCHEMA,inject  } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { gsap } from 'gsap';
+
+interface MapModalData {
+  title: string;
+  embedUrl: SafeResourceUrl;
+  gpsUrl: string;
+}
 
 @Component({
   selector: 'app-wedding-invitation',
@@ -11,6 +18,9 @@ import { gsap } from 'gsap';
   styleUrls: ['./wedding-invitation.component.css']
 })
 export class WeddingInvitationComponent implements OnInit, AfterViewInit {
+
+  private sanitizer = inject(DomSanitizer);
+
   @ViewChild('envelopeWrapper') envelopeWrapper!: ElementRef;
   @ViewChild('flapPolygon') flapPolygon!: ElementRef;
   @ViewChild('waxSeal') waxSeal!: ElementRef;
@@ -19,6 +29,12 @@ export class WeddingInvitationComponent implements OnInit, AfterViewInit {
   @ViewChild('fullContent') fullContent!: ElementRef;
   @ViewChild('bgMusic') bgMusic!: ElementRef<HTMLAudioElement>;
 
+  @ViewChild('modalOverlay') modalOverlay!: ElementRef;
+  @ViewChild('modalCard') modalCard!: ElementRef;
+
+  isMapModalOpen = false;  
+  activeModalData!: MapModalData;
+
   public isOpened = signal<boolean>(false);
   public isMuted = signal<boolean>(false);  
   public countdown = signal({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -26,6 +42,31 @@ export class WeddingInvitationComponent implements OnInit, AfterViewInit {
   public showGalleryModal = signal<boolean>(false); // Control para el Álbum
   // Variable de control para el estado del Popup
   public isRsvpModalOpen: boolean = false;  
+
+  private readonly MAPS_DATABASE = {
+    ceremonia: {
+      title: 'Ubicación de la Ceremonia',
+      // ⚠️ CORREGIDO: Cambiado 'https://google.com' por la URL real del mapa de la Municipalidad de Surco
+      embed: 'https://google.com' + 
+             '&iwloc=near' + 
+             '&style=feature:poi.business|element:all|visibility:off' + 
+             '&style=feature:poi.medical|element:all|visibility:off' +  
+             '&style=feature:transit|element:all|visibility:off',       
+      
+      gps: 'geo:-12.1387123,-76.9871869?q=-12.1387123,-76.9871869(Municipalidad+Santiago+de+Surco)'
+    },
+    recepcion: {
+      title: 'Ubicación de la Recepción',
+      // ⚠️ CORREGIDO: Cambiado 'https://google.com' por la URL real del mapa del Condominio Espacio Ferré
+      embed: 'https://google.com' +
+             '&iwloc=near' + 
+             '&style=feature:poi.business|element:all|visibility:off' + 
+             '&style=feature:poi.attraction|element:all|visibility:off' + 
+             '&style=feature:road|element:labels.text.fill|color:#746855', 
+      
+      gps: 'geo:-12.1430218,-77.0119539?q=-12.1430218,-77.0119539(Condominio+Espacio+Ferre)'
+    }
+  };
 
   ngOnInit(): void { this.initCountdown(); }
   ngAfterViewInit(): void { this.initBackgroundParticles(); }
@@ -202,21 +243,33 @@ export class WeddingInvitationComponent implements OnInit, AfterViewInit {
       return;
     }
     
-    // ⚠️ COLOCA AQUÍ TU NÚMERO DE WHATSAPP REAL (Ej: 51999999999 para Perú, sin el signo +)
+    // 📱 Número de WhatsApp real (Gino y Claudia)
     const phoneNumber = "51959087092"; 
     
-    // 🎨 MENSAJE REDACTADO FORMALMENTE PARA EDGAR Y ELIZABETH
+    // 🎨 Mensaje formal codificado de manera segura
     const message = encodeURIComponent(
       `¡Hola Gino y Claudia! ✨\n\nConfirmo con mucha alegría mi asistencia a su boda civil el próximo 18 de Setiembre del 2027.\n\n👤 Nombre: ${name}\n🎟️ Pases reservados: ${tickets}\n\n¡Gracias por hacernos parte de este hermoso día! 🥂`
     );
     
-    // 🧠 SOLUCIÓN AL ERROR: Usamos la URL limpia estándar internacional de WhatsApp
-    const finalUrl = `https://wa.me{phoneNumber}?text=${message}`;
+    // 🧠 DETECTOR INTELIGENTE DE DISPOSITIVOS MÓVILES (iOS / Android / BlackBerry / Windows Phone)
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+
+    let finalUrl: string;
+
+    if (isMobile) {
+      // 🚀 PROTOCOLO NATIVO PARA MÓVILES: Levanta la App de WhatsApp directamente sin pasar por el navegador
+      finalUrl = `whatsapp://send?phone=${phoneNumber}&text=${message}`;
+    } else {
+      // 💻 API WEB PARA COMPUTADORAS: Abre una pestaña limpia de WhatsApp Web de forma oficial
+      finalUrl = `https://whatsapp.com{phoneNumber}&text=${message}`;
+    }
     
-    // Cerramos el popup modal antes de redirigir
+    // Cerramos el popup modal de confirmación antes de la redirección
     this.toggleRsvpModal(false); 
     
-    // Abre el chat oficial de forma fluida tanto en PC como en móviles
+    // Ejecutamos la apertura en una pestaña limpia garantizando compatibilidad total
     window.open(finalUrl, '_blank');
   }
 
@@ -225,5 +278,31 @@ export class WeddingInvitationComponent implements OnInit, AfterViewInit {
     // 1. Apagamos el Signal de apertura de Angular de inmediato
     this.isOpened.set(false);   
     window.location.reload();
+  }
+
+  openMapModal(type: 'ceremonia' | 'recepcion') {
+    const selectedMap = this.MAPS_DATABASE[type];
+    
+    this.activeModalData = {
+      title: selectedMap.title,
+      // El secreto maestro: Saneamos el string para que el iframe lo pinte sin quedarse en blanco
+      embedUrl: this.sanitizer.bypassSecurityTrustResourceUrl(selectedMap.embed),
+      gpsUrl: selectedMap.gps
+    };
+
+    this.isMapModalOpen = true;
+    
+    setTimeout(() => {
+      gsap.fromTo(this.modalOverlay.nativeElement, { opacity: 0 }, { opacity: 1, duration: 0.4 });
+      gsap.fromTo(this.modalCard.nativeElement, { scale: 0.85, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(1.4)' });
+    }, 15);
+  }
+
+  closeMapModal() {
+    gsap.to(this.modalCard.nativeElement, { scale: 0.9, opacity: 0, duration: 0.3 });
+    gsap.to(this.modalOverlay.nativeElement, {
+      opacity: 0, duration: 0.3,
+      onComplete: () => { this.isMapModalOpen = false; }
+    });
   }
 }
