@@ -348,38 +348,41 @@
     /* Marco de flores superior que se extiende simétricamente de lado a lado */
     .card-3d-folder .botanical-header-flowers {
       position: absolute;
-      top: 0px; /* Ligeramente afuera para un sellado orgánico */
+      top: 0;
       left: 0;
-      width: 100%;
-      height: 182px; /* Más alto para que las ramas bajen más sobre el texto */
+      width: 100%;    
+      height: clamp(100px, 30vw, 190px); 
       background: url('../../../assets/botanical-top.png') no-repeat top center;
-      background-size: 100% 100%; /* Forzamos a que abarque todo el ancho y caiga */
-      z-index: 10; 
+      background-size: 100% 100%; 
+      z-index: 1; 
       pointer-events: none;
     }
   
     .card-header-premium {
-      text-align: center;
-      margin-top: 110px; /* Balanceado con el nuevo padding superior */
+      text-align: center;    
+      margin-top: clamp(60px, 20vw, 150px); 
       margin-bottom: 25px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2; 
     }
   
     .romantic-intro-phrase {
       font-family: 'Cinzel', serif;
-      font-size: 0.60rem;                     /* Escala fina y delicada */
-      letter-spacing: 1.5px;                   /* ⚠️ Tracking amplio para máxima elegancia */
-      line-height: 2;                      /* Excelente respiro vertical entre líneas */
-      color: #aa7c11;                        /* Tono oro viejo/bronce que amarra con tus botones y detalles */
-      text-transform: uppercase;             /* Forzado a mayúsculas estilizadas */
+      font-size: clamp(0.55rem, 1.8vw, 0.65rem); 
+      letter-spacing: 0.5px;                   
+      line-height: 2;                      
+      color: #aa7c11;                        
+      text-transform: uppercase;             
       font-weight: 600;
       margin: 0;
     }
   
     .couple-names-premium {
       font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;                       /* Tamaño imponente y elegante */
+      font-size: clamp(1.9rem, 7vw, 2.6rem); 
       font-weight: 500;
-      color: #6b141b !important;               /* 🎨 CORREGIDO: Tono vino/borgoña premium de alta gama */
+      color: #6b141b !important;               
       text-align: center;
       margin: 10px 0 5px 0;
       letter-spacing: 0.5px;
@@ -387,10 +390,10 @@
   
     .we-marry-sub {
       font-family: 'Cinzel', serif;
-      font-size: 0.72rem;                      /* Compacto y estilizado */
-      letter-spacing: 3px;                     /* Tracking amplio para máxima distinción */
-      color: #6b141b !important;               /* 🎨 CORREGIDO: Mismo tono vino nupcial */
-      text-transform: uppercase;               /* Forzado a mayúsculas finas */
+      font-size: clamp(0.60rem, 2vw, 0.72rem); 
+      letter-spacing: 3px;                     
+      color: #6b141b !important;               
+      text-transform: uppercase;               
       font-weight: 600;
       text-align: center;
       margin: 0 auto 20px auto;
@@ -401,23 +404,23 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      /* ⚠️ Incrementamos el margen inferior a 140px para que las flores tengan espacio abajo sin tapar nada */
-      margin: 60px auto 140px; 
+      justify-content: center;    
       width: 100%;
+      max-width: 320px; 
+      margin: 40px auto 120px auto; 
       box-sizing: border-box;
     }
     
     /* El círculo del retrato limpio y nítido */
-    .photo-circle-frame {
-      width: 210px;        
-      height: 210px;
+    .photo-circle-frame {    
+      width: 65%; 
+      aspect-ratio: 1 / 1;
       border-radius: 50%;
       overflow: hidden;    
       border: 4px solid #ffffff; 
       box-shadow: 0 15px 40px rgba(74, 64, 52, 0.1);
-      z-index: 2;          /* La foto se mantiene fija por detrás */
+      z-index: 2;          
       position: relative;
       display: block;
     }
@@ -431,25 +434,50 @@
     
     /* 🌹 LA GUIRNALDA BAJA EXCLUSIVAMENTE A LA BASE (REPARADO DEFINITIVO) */
     .couple-photo-section .botanical-garland-embrace {
-      position: absolute;
-      bottom: -103px;
-      left: 52%;
-      transform: translateX(-48%) rotate(40deg);
-      width: 320px;
-      height: 342px;
-      background: url(../../../assets/couple-main.png) no-repeat center bottom;
-      background-size: contain;
+      position: absolute;   
+      top: 40%;
+      left: 50%;        
+      transform: translate(-45%, -32%) rotate(40deg);    
+      width: 100%; 
+      height: 161%;    
+      background: url('../../../assets/couple-main.png') no-repeat center center;
+      background-size: contain;    
       overflow: visible;
-      z-index: 3;
+      z-index: 3; 
       pointer-events: none;
     }
     
     /* Botón Central de Cámara */
-    .gallery-trigger-center-section { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin: 25px 0 35px; cursor: pointer; }
+    .gallery-trigger-center-section { 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 8px; 
+      margin: 25px 0 35px; 
+      cursor: pointer; 
+      -webkit-tap-highlight-color: transparent; 
+    }
     
-    .gold-icon-circle-center-btn { width: 60px; height: 60px; border-radius: 50%; background: #ffffff; border: 1px solid var(--color-gold); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(170, 124, 17, 0.08); }
+    .gold-icon-circle-center-btn { 
+      width: clamp(50px, 12vw, 60px); 
+      height: clamp(50px, 12vw, 60px); 
+      border-radius: 50%; 
+      background: #ffffff; 
+      border: 1px solid var(--color-gold); 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      box-shadow: 0 6px 15px rgba(170, 124, 17, 0.08); 
+    }
     
-    .btn-label-premium { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 2px; color: #aa7c11; font-weight: 600; }
+    .btn-label-premium { 
+      font-family: 'Cinzel', serif; 
+      font-size: clamp(0.65rem, 1.8vw, 0.72rem); 
+      letter-spacing: 2px; 
+      color: #aa7c11; 
+      font-weight: 600; 
+    } 
 
    /* Bendición de Padres */
    .parents-blessing-section {
@@ -501,64 +529,75 @@
     position: relative;
     width: 100%;
     height: auto; 
-    /* Reducimos el padding inferior para comprimir el bloque de forma elegante */
-    padding: 40px 12px 100px; 
-    margin: 15px 0 0 0;
+    /* Padding fluido: da suficiente espacio vertical para que todo respire */
+    padding: clamp(40px, 8vw, 60px) 16px; 
+    margin: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: visible; 
+    overflow: visible; /* Crucial para que las acuarelas se extiendan libremente */
   }
 
-  .date-hero-section-wrapper .mid-watercolor-background {
+  .mid-watercolor-background {
     position: absolute;
-    top: 0;
+    top: 10px; /* Sube ligeramente para abrazar la sección anterior */
     left: 0;
     width: 100%;
-    height: 100%;     
-    background: url('../../../assets/botanical-frame.png') no-repeat center bottom;    
-    background-size: 130% 100%;     
-    opacity: 1;                 
-    pointer-events: none;          
+    height: 100%; 
+    background: url('../../../assets/botanical-frame-header.png') no-repeat center top;
+    background-size: 100% auto; 
+    pointer-events: none;
     z-index: 1;
-    mix-blend-mode: multiply; 
+    mix-blend-mode: multiply;
+  }
+
+  .mid-watercolor-background-footer {
+    position: absolute;
+    /* El secreto maestro: Se ancla a la base del contenedor global y se estira */
+    bottom: 30px; 
+    left: 0;
+    width: 100%;
+    height: clamp(140px, 25vw, 180px); /* Ajuste dinámico de la pincelada */
+    background: url('../../../assets/botanical-frame-footer.png') no-repeat center bottom;
+    background-size: 110% auto; 
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
   }
   
   .date-hero-content-box {
     position: relative;
-    z-index: 5; 
+    z-index: 5; /* Pasa por encima del fondo superior */
     text-align: center;
     width: 100%;    
-    margin-bottom: 25px; 
+    margin-bottom: clamp(20px, 6vw, 20px); 
   }
 
   /* ⚠️ NUEVO AJUSTE: Empujamos la frase romántica y la fecha hacia abajo y la derecha */
-  .date-hero-content-box .romantic-phrase-mid,
-  .date-hero-content-box .grand-date-display {    
-    margin-top: 15px;     
-    transform: translateX(15px); 
+  .date-hero-content-box .romantic-phrase-mid
+  {    
+    margin-top: -20px;     
+    transform: translateX(45px); 
   }
 
   .romantic-phrase-mid { 
     font-family: 'Cinzel', serif;
     font-style: italic; 
-    font-size: 1.05rem; 
+    font-size: clamp(0.85rem, 2.5vw, 1.05rem); 
     color: #aa7c11;  
-    line-height: 1.7; 
+    line-height: 1.8; 
     font-weight: 600;
-    margin-bottom: 12px; 
+    margin-bottom: 16px; 
   }
   
   .grand-date-display {   
     font-family: 'Cinzel', serif; 
-    font-size: 2.2rem; 
+    font-size: clamp(2rem, 7vw, 2.6rem); 
     font-weight: 400; 
-    color: var(--color-gold-dark); 
-    letter-spacing: 3px; 
-    margin: 0 auto;
-    padding: 0;
+    letter-spacing: 4px; 
+    margin: 15px auto 25px;
     display: inline-block;
     text-align: center;
     background: linear-gradient(135deg, #aa7c11 0%, #d4af37 100%); 
@@ -568,20 +607,40 @@
 
   /* ➔ FILAS ASIMÉTRICAS INTERACTIVAS (IDÉNTICAS AL VIDEO) */
   /* Filas interactivas con respiro vertical */
+  .interactive-cards-container {
+    position: relative;
+    z-index: 10; /* Obliga a los enlaces a estar al frente de la pincelada */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Separación simétrica entre Ceremonia y Recepción */
+    margin-top: 0px;
+  }
+
   .interactive-item-row {
-    display: flex; 
-    align-items: center; 
-    gap: 20px;
-    padding: 14px 20px; 
-    margin: 10px 0; 
-    border-bottom: 1px dashed rgba(212, 175, 55, 0.12);
+    display: grid;
+    /* ⚠️ SOLUCIÓN AL DESALINEADO: Estructura fija de 2 columnas (Icono | Texto) */
+    grid-template-columns: 75px 1fr; 
+    align-items: center;
+    gap: 16px;
+    padding: 8px; 
+    background: rgba(255, 255, 255, 0.4); /* Efecto cristal translúcido ultra premium */
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 6px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
     cursor: pointer; 
     text-decoration: none;
-    background: transparent; 
     box-sizing: border-box;
-    position: relative;
-    z-index: 10;
     width: 100%;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.8);
+      border-color: rgba(212, 175, 55, 0.3);
+    }
   }
 
   .date-hero-section-wrapper a:last-of-type {
@@ -592,7 +651,13 @@
   .interactive-item-row:hover { background: rgba(244, 239, 230, 0.3); }
   .link-card-wrapper { display: flex; }
   
-  .icon-column { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 85px; flex-shrink: 0; }
+  .icon-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
   
   .gold-icon-circle {
     width: 75px; 
@@ -686,7 +751,7 @@
     border: 1px solid rgba(214, 175, 55, 0.3); 
     border-radius: 4px; 
     padding: 14px 10px;     
-    margin: 30px auto 5px; 
+    margin: 0px auto 5px; 
     box-shadow: 0 6px 15px rgba(0,0,0,0.03); 
     max-width: 320px;
     z-index: 2;
