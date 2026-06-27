@@ -547,7 +547,7 @@
     width: 100%;
     height: 100%; 
     background: url('../../../assets/botanical-frame-header.png') no-repeat center top;
-    background-size: 100% auto; 
+    background-size: 138% auto; 
     pointer-events: none;
     z-index: 1;
     mix-blend-mode: multiply;
@@ -578,8 +578,8 @@
   /* ⚠️ NUEVO AJUSTE: Empujamos la frase romántica y la fecha hacia abajo y la derecha */
   .date-hero-content-box .romantic-phrase-mid
   {    
-    margin-top: -20px;     
-    transform: translateX(45px); 
+    margin-top: 15px;     
+    transform: translateX(32px); 
   }
 
   .romantic-phrase-mid { 
@@ -1154,61 +1154,4 @@
   .material-icons {
     font-size: 19px;
     color: #aa7c11;
-  } 
-
-  /* ==========================================================================
-   📱 5. ADAPTACIÓN ABSOLUTA EN TIEMPO REAL PARA CELULARES (MEDIA QUERY DEFINITIVA)
-   ========================================================================== */
-@media (max-width: 576px) {
-  /* Aligeramos los rellenos externos para ganar espacio en pantallas angostas */
-  .full-content-scroll {
-    padding: 10px 8px;
-  }
-
-  .card-3d-folder {
-    border-radius: 4px;
-  }
-
-  .inner-border-luxury {
-    margin: 8px;
-    padding: 24px 12px;
-  }
-
-  /* Escalado fluido de textos en cabecera */
-  .couple-names-premium {
-    font-size: 2.2rem; 
-  }
-
-  /* Ajuste de escala para el retrato en pantallas chicas */
-  .photo-circle-frame {
-    width: 170px;
-    height: 170px;
-  }
-
-  /* 🧠 EL TRUCO PARA LA MONTAÑA: Duplicamos el espacio vertical en el móvil */
-  .date-hero-section-wrapper {
-    padding: 80px 8px 130px; 
-  }
-
-  .date-hero-section-wrapper .mid-watercolor-background {
-    /* Clava las flores a la izquierda y fuerza a que la montaña baje */
-    background-position: left top;
-    background-size: 100% auto;
-  }
-
-  .romantic-phrase-mid {
-    font-size: 0.62rem;
-    letter-spacing: 2.2px;
-    margin-top: 50px; 
-  }
-
-  .grand-date-display {
-    font-size: 2rem;
-  }
-
-  /* Reacomodo de iconos y textos de mapas en pantallas táctiles compactas */
-  .interactive-item-row {
-    gap: 12px;
-    padding: 12px 6px;
-  }
-}
+  }  
