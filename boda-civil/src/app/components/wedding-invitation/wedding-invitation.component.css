@@ -556,7 +556,7 @@
   .mid-watercolor-background-footer {
     position: absolute;
     /* El secreto maestro: Se ancla a la base del contenedor global y se estira */
-    bottom: 10px; 
+    bottom: -10px; 
     left: 0;
     width: 100%;
     height: clamp(140px, 25vw, 180px); /* Ajuste dinámico de la pincelada */
@@ -579,7 +579,7 @@
   .date-hero-content-box .romantic-phrase-mid
   {    
     margin-top: 15px;     
-    transform: translateX(36px); 
+    transform: translateX(40px); 
   }
 
   .romantic-phrase-mid { 
