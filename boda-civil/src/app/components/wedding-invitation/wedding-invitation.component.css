@@ -556,12 +556,12 @@
   .mid-watercolor-background-footer {
     position: absolute;
     /* El secreto maestro: Se ancla a la base del contenedor global y se estira */
-    bottom: 30px; 
+    bottom: 10px; 
     left: 0;
     width: 100%;
     height: clamp(140px, 25vw, 180px); /* Ajuste dinámico de la pincelada */
     background: url('../../../assets/botanical-frame-footer.png') no-repeat center bottom;
-    background-size: 110% auto; 
+    background-size: 100% auto; 
     pointer-events: none;
     z-index: 1;
     mix-blend-mode: multiply;
@@ -579,7 +579,7 @@
   .date-hero-content-box .romantic-phrase-mid
   {    
     margin-top: 15px;     
-    transform: translateX(32px); 
+    transform: translateX(36px); 
   }
 
   .romantic-phrase-mid { 
