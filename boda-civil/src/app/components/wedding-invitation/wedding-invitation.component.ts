@@ -246,7 +246,7 @@ export class WeddingInvitationComponent implements OnInit, AfterViewInit {
     
     // 🎨 Mensaje formal codificado de manera segura
     const message = encodeURIComponent(
-      `¡Hola Gino y Claudia! ✨\n\nConfirmo con mucha alegría mi asistencia a su boda civil el próximo 18 de Setiembre del 2027.\n\n👤 Nombre: ${name}\n🎟️ Pases reservados: ${tickets}\n\n¡Gracias por hacernos parte de este hermoso día! 🥂`
+      `¡Hola Gino y Claudia! ✨\n\nConfirmo con mucha alegría mi asistencia a su boda civil el próximo 28 de agosto del 2026.\n\n👤 Nombre: ${name}\n🎟️ Pases reservados: ${tickets}\n\n¡Gracias por hacernos parte de este hermoso día! 🥂`
     );
     
     // 🧠 DETECTOR INTELIGENTE DE DISPOSITIVOS MÓVILES (iOS / Android / BlackBerry / Windows Phone)
