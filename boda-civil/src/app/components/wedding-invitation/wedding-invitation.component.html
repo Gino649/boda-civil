@@ -1,5 +1,5 @@
 <div class="luxury-container">    
-  <audio #bgMusic loop src="assets/audio/Perfect_Kevin_Karla.mp3"></audio>  
+  <audio #bgMusic loop src="assets/audio/Llegastes_Tu.mp3"></audio>  
   @if(isOpened()) {
     <button class="audio-control" (click)='toggleMute()' aria-label="Control de música">
       <!-- 🔊 Icono vectorial fino de volumen/parlante -->
@@ -115,11 +115,11 @@
         <section class="parents-blessing-section">
           <p class="blessing-title">Con la bendición de Dios y nuestros padres</p>
           <div class="parents-names-column">
-            <p class="parent-name">Jose Yamunaqué Sosa</p>
+            <p class="parent-name">José Yamunaqué Sosa</p>
             <p class="parent-name">Marlene del Pilar Albán Zavala</p>
             <div class="parent-separator">✦</div>
             <p class="parent-name">José Manuel Canseco Canessa </p>
-            <p class="parent-name">Juana Rosa Vilela </p>
+            <p class="parent-name">Rosa Juana Vilela de Canseco </p>
           </div>
         </section>
   
@@ -193,8 +193,56 @@
                 <p class="time-text-premium">3:00 p.m. - 11:00 p.m.</p>
               </div>
             </div>
+
+            <!-- 📦 8. FILA: BOTÓN DISPARADOR DEL CRONOGRAMA -->
+            <div (click)="openTimelineModal()" class="interactive-item-row link-card-wrapper">
+              <div class="icon-column">
+                <div class="gold-icon-circle">
+                  <!-- ⏳ Icono de Reloj de Arena / Tiempo de trazo fino -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#AA7C11" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="inline-svg-icon">
+                    <path d="M5 2h14M5 22h14M19 2s-1 7-7 7-7-7-7-7M5 22s1-7 7-7 7 7 7 7M12 9v6"/>
+                  </svg>
+                  <!-- Manito indicadora diagonal oficial -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#AA7C11" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="click-hand-indicator">
+                    <path d="M10 11V6a2 2 0 0 1 4 0v5" />
+                    <path d="M14 10.5a2 2 0 0 1 4 0v1.5a2 2 0 0 1 4 0V14a7 7 0 0 1-14 0v-3a2 2 0 0 1 4 0v.5" />
+                    <path d="M6 14V11a2 2 0 0 1 2-2h2" />
+                  </svg>
+                </div>
+                <span class="icon-tag">ITINERARIO</span>
+              </div>
+              <div class="text-info-column text-left-align">
+                <h3 class="event-title-text">Cronograma del Evento</h3>
+                <p class="place-text-bold">Conoce los momentos más importantes</p>
+                <p class="address-text-sub">Haz clic para ver el itinerario completo de nuestra boda.</p>
+              </div>
+            </div>
+
+            <!-- ✈️ SECCIÓN: DETALLE DE REGALOS (LUNA DE MIEL) -->
+            <div class="interactive-item-row no-hover-effect">
+              <div class="icon-column">
+                <div class="gold-icon-circle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#AA7C11" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="inline-svg-icon">
+                    <path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8" />
+                    <path d="M2 7h20v5H2z" />
+                    <path d="M12 7v15" />
+                    <path d="M12 7C9 3 5 5 12 7z" />
+                    <path d="M12 7c3-4 7-2 0 0z" />
+                  </svg>
+                </div>
+         
+                <span class="icon-tag">REGALOS</span>
+              </div>
+              
+              <div class="text-info-column text-left-align">
+                <h3 class="event-title-text">Viaje de Esposos</h3>
+                <p class="gifts-poetic-phrase">
+                  Ya tenemos el amor, el hogar y los mejores recuerdos a tu lado. Por eso, en lugar de obsequios tradicionales, los invitamos a ayudarnos a construir nuestra próxima aventura: viajar y explorar el mundo juntos en nuestro primer <strong>viaje de esposos</strong>. ✈️✨
+                </p>
+              </div>
+            </div>
                         
-          </div>
+          </div>         
         
         </section>   
         
@@ -302,29 +350,97 @@
       <div class="luxury-modal-card" (click)="$event.stopPropagation()" #modalCard>
         
         <div class="modal-header">
+          <!-- 💡 CORREGIDO: Se cambia activeModalData?.title por activeModalData.title -->
           <h4 class="modal-title">{{ activeModalData.title }}</h4>
           <button class="modal-close-btn" (click)="closeMapModal()">&times;</button>
         </div>
   
-        <!-- ⚠️ NOTA: [src] lleva corchetes para que Angular acepte la URL segura -->
         <div class="modal-body-map">
-          <iframe 
-            [src]="activeModalData.embedUrl"
-            width="100%"
-            height="100%"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+          <!-- 💡 CORREGIDO: Se evalúa directo sin la interrogación -->
+          @if (activeModalData.embedUrl) {
+            <iframe 
+              [src]="activeModalData.embedUrl"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          } @else {
+            <div class="map-loader">Cargando mapa...</div>
+          }
         </div>
   
         <div class="modal-footer">
+          <!-- 💡 CORREGIDO: Se cambia activeModalData?.gpsUrl por activeModalData.gpsUrl -->
           <a [href]="activeModalData.gpsUrl" target="_blank" class="btn-gps-external">
             Abrir con GPS del Celular
           </a>
         </div>
   
+      </div>
+    </div>
+  
+  }
+
+  @if (isTimelineModalOpen) {
+    <div class="luxury-modal-overlay" (click)="closeTimelineModal()" #timelineOverlay>
+      <div class="luxury-modal-card timeline-card-adjustment" (click)="$event.stopPropagation()" #timelineCard>
+        
+        <!-- Cabecera del Itinerario -->
+        <div class="modal-header">
+          <h4 class="modal-title">Itinerario de Nuestra Boda</h4>
+          <button class="modal-close-btn" (click)="closeTimelineModal()">&times;</button>
+        </div>
+
+        <!-- Cuerpo Interno con Scroll Protegido -->
+        <div class="modal-body-scrollable">
+          <div class="popup-timeline-container">
+            <div class="popup-vertical-line"></div>
+
+            <!-- Evento 1 -->
+            <div class="popup-timeline-item">
+              <span class="popup-time">11:30 AM</span>
+              <div class="popup-node"><div class="node-dot"></div></div>
+              <div class="popup-desc-box">
+                <h5>Bienvenida</h5>
+                <p>Recepción de invitados en el Salón Premium.</p>
+              </div>
+            </div>
+
+            <!-- Evento 2 -->
+            <div class="popup-timeline-item">
+              <span class="popup-time">12:00 PM</span>
+              <div class="popup-node"><div class="node-dot active-dot"></div></div>
+              <div class="popup-desc-box highlighted-node">
+                <h5>Ceremonia Civil</h5>
+                <p>Nuestra unión oficial ante las leyes y seres queridos.</p>
+              </div>
+            </div>
+
+            <!-- Evento 3 -->
+            <div class="popup-timeline-item">
+              <span class="popup-time">01:30 PM</span>
+              <div class="popup-node"><div class="node-dot"></div></div>
+              <div class="popup-desc-box">
+                <h5>Brindis & Fotos</h5>
+                <p>Momento de felicitaciones y sesión fotográfica oficial.</p>
+              </div>
+            </div>
+
+            <!-- Evento 4 -->
+            <div class="popup-timeline-item">
+              <span class="popup-time">3:00 PM</span>
+              <div class="popup-node"><div class="node-dot"></div></div>
+              <div class="popup-desc-box">
+                <h5>Recepción </h5>
+                <p>Celebraremos nuestra unión con todos los invitados.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   }

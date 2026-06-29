@@ -582,18 +582,18 @@
     mix-blend-mode: multiply;
   }
 
-  /*.mid-watercolor-background-footer {
+  .mid-watercolor-background-footer {
     position: absolute;
     bottom: 0px; 
     left: 0;
     width: 100%;
     height: clamp(40px, 25vw, 160px); 
-    background: url('../../../assets/botanical-frame-footer.png') no-repeat center bottom;
+    /*background: url('../../../assets/botanical-frame-footer.png') no-repeat center bottom;*/
     background-size: 100% auto; 
     pointer-events: none;
     z-index: 1;
     mix-blend-mode: multiply;
-  }*/
+  }
   
   .date-hero-content-box {
     position: relative;
@@ -1377,3 +1377,155 @@
   -webkit-tap-highlight-color: transparent;
   text-transform: uppercase;
 }
+
+/* ==========================================================================
+   SECCIÓN DE REGALOS / LUNA DE MIEL (ESTILOS COMPLEMENTARIOS)
+   ========================================================================== */
+   
+   .gold-icon-circle-static {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid rgba(170, 124, 17, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(170, 124, 17, 0.04);
+  
+    .inline-svg-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }  
+  
+  .interactive-item-row.no-hover-effect {
+    display: grid !important;
+    /* ⚠️ Forzamos la estructura exacta de 2 columnas: 75px para el icono y 1fr para el texto */
+    grid-template-columns: 75px 1fr !important;
+    align-items: start !important;
+    gap: 16px !important;
+    padding: 20px 16px !important;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+  .interactive-item-row.no-hover-effect .text-info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 4px; /* El colchón exacto de aire horizontal que tienen los de arriba */
+    text-align: left;
+  }
+  
+  .gifts-poetic-phrase {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(0.82rem, 2.4vw, 0.92rem);
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin: 0;
+    /* ⚠️ Quitamos cualquier padding manual que esté empujando el texto hacia el fondo */
+    padding: 0; 
+  }
+
+  /* ==========================================================================
+   ESTILOS PREMIUM: POPUP MODAL CRONOGRAMA DIGITAL
+   ========================================================================== */
+
+  .timeline-card-adjustment {
+    max-width: 400px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-body-scrollable {
+    width: 100%;
+    padding: 24px 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; 
+    background: #FDFBF7;
+  }
+
+  .popup-timeline-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .popup-vertical-line {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 82px; /* Alineación exacta entre la hora y la descripción */
+    width: 1px;
+    background: rgba(170, 124, 17, 0.2);
+  }
+
+  .popup-timeline-item {
+    display: grid;
+    grid-template-columns: 70px 24px 1fr;
+    align-items: start;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .popup-time {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #aa7c11;
+    padding-top: 4px;
+    text-align: right;
+  }
+
+  .popup-node {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 22px;
+
+    .node-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid #C5A880;
+    }
+
+    .node-dot.active-dot {
+      width: 8px;
+      height: 8px;
+      background: #6b141b; 
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 3px rgba(107, 20, 27, 0.15);
+    }
+  }
+
+  .popup-desc-box {
+    text-align: left;
+    padding: 4px 0 0 4px;
+
+    h5 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #2c2c2c;
+      margin: 0 0 4px 0;
+    }
+
+    p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.76rem;
+      color: #777777;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    &.highlighted-node {
+      h5 { color: #6b141b; font-weight: 700; }
+    }
+  }

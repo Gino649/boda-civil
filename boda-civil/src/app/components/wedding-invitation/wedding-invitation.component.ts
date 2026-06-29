@@ -32,8 +32,13 @@ export class WeddingInvitationComponent implements OnInit, AfterViewInit {
   @ViewChild('modalOverlay') modalOverlay!: ElementRef;
   @ViewChild('modalCard') modalCard!: ElementRef;
 
+  @ViewChild('timelineOverlay') timelineOverlay!: ElementRef;
+  @ViewChild('timelineCard') timelineCard!: ElementRef;
+
   isMapModalOpen = false;  
   activeModalData!: MapModalData;
+  isTimelineModalOpen = false;
+  
 
   public isOpened = signal<boolean>(false);
   public isMuted = signal<boolean>(false);  
@@ -46,25 +51,18 @@ export class WeddingInvitationComponent implements OnInit, AfterViewInit {
   private readonly MAPS_DATABASE = {
     ceremonia: {
       title: 'Ubicación de la Ceremonia',
-      // ⚠️ CORREGIDO: Cambiado 'https://google.com' por la URL real del mapa de la Municipalidad de Surco
-      embed: 'https://google.com' + 
-             '&iwloc=near' + 
-             '&style=feature:poi.business|element:all|visibility:off' + 
-             '&style=feature:poi.medical|element:all|visibility:off' +  
-             '&style=feature:transit|element:all|visibility:off',       
-      
-      gps: 'geo:-12.1387123,-76.9871869?q=-12.1387123,-76.9871869(Municipalidad+Santiago+de+Surco)'
+      embed:
+        'https://www.google.com/maps?q=-12.1387123,-76.9871869&z=17&output=embed',
+      gps:
+        'geo:-12.1387123,-76.9871869?q=-12.1387123,-76.9871869(Municipalidad+Santiago+de+Surco)'
     },
+  
     recepcion: {
       title: 'Ubicación de la Recepción',
-      // ⚠️ CORREGIDO: Cambiado 'https://google.com' por la URL real del mapa del Condominio Espacio Ferré
-      embed: 'https://google.com' +
-             '&iwloc=near' + 
-             '&style=feature:poi.business|element:all|visibility:off' + 
-             '&style=feature:poi.attraction|element:all|visibility:off' + 
-             '&style=feature:road|element:labels.text.fill|color:#746855', 
-      
-      gps: 'geo:-12.1430218,-77.0119539?q=-12.1430218,-77.0119539(Condominio+Espacio+Ferre)'
+      embed:
+        'https://www.google.com/maps?q=-12.1430218,-77.0119539&z=17&output=embed',
+      gps:
+        'geo:-12.1430218,-77.0119539?q=-12.1430218,-77.0119539(Condominio+Espacio+Ferre)'
     }
   };
 
@@ -220,7 +218,7 @@ export class WeddingInvitationComponent implements OnInit, AfterViewInit {
 
   private playAudio(): void {
     if (this.bgMusic && this.bgMusic.nativeElement) {
-      this.bgMusic.nativeElement.volume = 0.5;
+      this.bgMusic.nativeElement.volume = 0.9;
       this.bgMusic.nativeElement.play().catch(() => {});
     }
   }
@@ -305,4 +303,29 @@ export class WeddingInvitationComponent implements OnInit, AfterViewInit {
       onComplete: () => { this.isMapModalOpen = false; }
     });
   }
+
+  openTimelineModal() {
+    this.isTimelineModalOpen = true;
+
+    setTimeout(() => {
+      // Entrada cinemática difuminada del fondo esmerilado
+      gsap.fromTo(this.timelineOverlay.nativeElement, 
+        { opacity: 0 }, { opacity: 1, duration: 0.35 }
+      );
+      // Zoom elástico refinado para la tarjeta del itinerario
+      gsap.fromTo(this.timelineCard.nativeElement, 
+        { scale: 0.88, opacity: 0, y: 15 }, 
+        { scale: 1, opacity: 1, y: 0, duration: 0.45, ease: 'back.out(1.2)' }
+      );
+    }, 15);
+  }
+
+  closeTimelineModal() {
+    gsap.to(this.timelineCard.nativeElement, { scale: 0.9, opacity: 0, y: 10, duration: 0.25 });
+    gsap.to(this.timelineOverlay.nativeElement, {
+      opacity: 0, duration: 0.25,
+      onComplete: () => { this.isTimelineModalOpen = false; }
+    });
+  }
+
 }
