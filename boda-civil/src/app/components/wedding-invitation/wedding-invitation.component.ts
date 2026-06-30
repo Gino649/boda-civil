@@ -35,10 +35,16 @@ export class WeddingInvitationComponent implements OnInit, AfterViewInit {
   @ViewChild('timelineOverlay') timelineOverlay!: ElementRef;
   @ViewChild('timelineCard') timelineCard!: ElementRef;
 
+  @ViewChild('walletOverlay') walletOverlay!: ElementRef;
+  @ViewChild('walletCard') walletCard!: ElementRef;
+
   isMapModalOpen = false;  
   activeModalData!: MapModalData;
   isTimelineModalOpen = false;
-  
+
+  isWalletModalOpen = false;
+  activeWallet: 'Yape' | 'Plin' = 'Yape';
+  copyStatusText = 'Copiar';  
 
   public isOpened = signal<boolean>(false);
   public isMuted = signal<boolean>(false);  
@@ -327,5 +333,37 @@ export class WeddingInvitationComponent implements OnInit, AfterViewInit {
       onComplete: () => { this.isTimelineModalOpen = false; }
     });
   }
+
+  openWalletModal(wallet: 'Yape' | 'Plin') {
+    this.activeWallet = wallet;
+    this.copyStatusText = 'Copiar'; // Resetea el texto del botón
+    this.isWalletModalOpen = true;
+
+    setTimeout(() => {
+      gsap.fromTo(this.walletOverlay.nativeElement, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+      gsap.fromTo(this.walletCard.nativeElement, { scale: 0.88, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(1.3)' });
+    }, 15);
+  }
+
+  closeWalletModal() {
+    gsap.to(this.walletCard.nativeElement, { scale: 0.9, opacity: 0, duration: 0.25 });
+    gsap.to(this.walletOverlay.nativeElement, {
+      opacity: 0, duration: 0.25,
+      onComplete: () => { this.isWalletModalOpen = false; }
+    });
+  }
+
+  // 📋 Función interactiva para copiar el número de celular al portapapeles del smartphone
+  copyToClipboard(text: string) {
+    navigator.clipboard.writeText(text).then(() => {
+      this.copyStatusText = '¡Copiado!'; // Feedback inmediato de éxito UX
+      setTimeout(() => {
+        this.copyStatusText = 'Copiar';
+      }, 2000);
+    }).catch(() => {
+      alert('No se pudo copiar de forma automática. El número es: ' + text);
+    });
+  }
+
 
 }

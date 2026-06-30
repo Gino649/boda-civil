@@ -1314,6 +1314,19 @@
   box-sizing: border-box;
 }
 
+.luxury-modal-card.wallet-card-adjustment {
+  width: 100%;
+  max-width: 360px;
+  background: #FDFBF7; /* Textura marfil suave nupcial */
+  border-radius: 16px; /* Curvatura suavizada tipo iOS */
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 30px 65px rgba(44, 38, 32, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -1527,5 +1540,230 @@
 
     &.highlighted-node {
       h5 { color: #6b141b; font-weight: 700; }
+    }
+  }
+
+  /* ==========================================================================
+   BOTONES Y MODAL DE TRANSFERENCIA DIGITAL (YAPE / PLIN)
+   ========================================================================== */
+
+  .transfer-actions-flex {
+    display: flex;
+    gap: 12px;
+    margin-top: 14px;
+    width: 100%;
+  }
+
+  .btn-transfer {
+    flex: 1;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: #ffffff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    -webkit-tap-highlight-color: transparent;
+
+    &.yape {
+      color: #00d6aa;
+      &:active { background: rgba(0, 214, 170, 0.05); }
+    }
+    &.plin {
+      color: #ff3b30;
+      &:active { background: rgba(255, 59, 48, 0.05); }
+    }
+  }
+
+  /* Ajustes exclusivos de la tarjeta del Modal Wallet */
+  .wallet-icons-flex {
+    display: flex;
+    gap: 25px; /* Espacio elegante entre los dos disparadores */
+    margin-top: 5px;
+    width: 100%;
+    align-items: center;
+    
+    /* ⚠️ LA SOLUCIÓN: Centrado horizontal absoluto de los elementos hijos */
+    justify-content: center; 
+  }
+
+  .wallet-icon-trigger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mini-gold-circle-wallet {
+    position: relative; /* Esencial para que la manito se ancle a este círculo */
+    width: 44px; 
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid rgba(170, 124, 17, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(170, 124, 17, 0.04);
+    box-sizing: border-box;
+    
+    /* ⚠️ LA CLAVE DE LA SOLUCIÓN: */
+    /* Cambiamos 'hidden' por 'visible' para permitir que la manito sobresalga elegantemente */
+    overflow: visible !important; 
+  }
+
+  .mini-gold-circle-wallet .wallet-svg-hd {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%; /* Esto evita que el fondo de color de Yape se salga por las esquinas */
+  }
+  
+  .mini-gold-circle-wallet .click-hand-indicator {
+    position: absolute;
+    /* La empujamos un poquito hacia afuera de los límites del círculo blanco */
+    bottom: -11px;
+    right: -11px;
+    width: 25px; 
+    height: 25px;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0;
+    z-index: 10; /* Pasa por el frente de todo */
+    transform: rotate(-25deg);
+    animation: diagonalClickPulse 2s infinite ease-in-out;
+  }
+
+  .wallet-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 1.5px;
+    color: #aa7c11;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .wallet-badge-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 6px 18px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 0 auto;
+    text-transform: uppercase;
+  
+    /* Colores institucionales aplicados con opacidad premium */
+    &.yape { background: rgba(0, 214, 170, 0.08); color: #00b38e; }
+    &.plin { background: rgba(255, 59, 48, 0.08); color: #e0241b; }
+  }
+  
+  /* Cajas de Información Informática */
+  .wallet-info-box {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important; /* ⚠️ Fuerza un espacio real de 6px entre la etiqueta gris y el nombre negro */
+    text-align: left;
+    width: 100%;
+    height: auto !important; /* Elimina cualquier restricción de altura que muerda el texto */
+    margin: 0 !important; /* Limpia márgenes rebeldes del navegador */
+  
+    .info-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #8c8c8c;
+      font-weight: 500;
+      margin: 0 !important;
+      padding: 0 !important;
+      display: block !important;
+      line-height: 1.2;
+    }
+  
+    .info-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #2c2c2c;
+      margin: 0 !important; /* ⚠️ Evita que los párrafos se desplacen solos */
+      padding: 0 !important;
+      font-weight: 500;
+      line-height: 1.4;
+      display: block !important;
+    }
+  }
+
+  /* Cuerpo Interno del Modal (Añadimos un colchón de aire balanceado) */
+  .modal-body-wallet {
+    padding: 24px 20px;
+    text-align: center;
+    background: #FDFBF7;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* ⚠️ Separa simétricamente el bloque del nombre del bloque del número */
+    box-sizing: border-box;
+  }
+  
+  /* Fila del Número con Contenedor de Copiado Rápido */
+  .phone-copy-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(170, 124, 17, 0.03); /* Fondo sutil oro traslúcido */
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px dashed rgba(170, 124, 17, 0.25);
+    margin-top: 8px; /* Espacio protector entre los dos bloques de números */
+    width: 100%;
+    box-sizing: border-box;
+  
+    .info-value-phone {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #6b141b; /* Hermoso tono vino nupcial */
+      margin: 0;
+      letter-spacing: 1px; /* Tracking elegante para los dígitos */
+    }
+  
+    /* ➔ EL BOTÓN DE COPIAR REESTRURADO DESDE CERO */
+    .btn-copy-action {
+      /* Reseteamos por completo el estilo feo de navegador antiguo */
+      -webkit-appearance: none;
+      appearance: none;
+      border: none !important;
+      outline: none !important;
+      
+      /* Look premium de pastilla dorada nítida */
+      background: #aa7c11 !important; /* Color oro viejo */
+      color: #ffffff !important;
+      
+      font-family: 'Cinzel', serif; /* Tipografía oficial de la boda */
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 1.5px; /* Separación de letras estilo marca de lujo */
+      text-transform: uppercase;
+      
+      padding: 8px 16px;
+      border-radius: 4px; /* Esquinas suavizadas finas */
+      box-shadow: 0 4px 10px rgba(170, 124, 17, 0.15);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+  
+      /* Microinteracción fina al presionar en el celular */
+      &:active {
+        background: #6b141b !important; /* Cambia temporalmente a vino nupcial */
+        transform: scale(0.95);
+        box-shadow: 0 2px 5px rgba(107, 20, 27, 0.2);
+      }
     }
   }
